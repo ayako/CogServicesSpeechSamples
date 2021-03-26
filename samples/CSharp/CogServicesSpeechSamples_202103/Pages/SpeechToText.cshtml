@@ -1,0 +1,20 @@
+﻿@page
+@model CogServicesSpeechSamples_202103.Pages.SpeechToTextModel
+@{
+    ViewData["Title"] = "Speech to Text";
+}
+
+<h1>Speech to Text</h1>
+Upload WAV file and click "Analyze" to recognize.
+<form method="post" enctype="multipart/form-data">
+    <div><input asp-for="VoiceFile" type="file" /></div>
+    <div><input type="submit" value="Recognize" asp-page-handler="Recognize" /></div>
+</form>
+
+<div>
+    @Model.Result
+</div>
+<div>
+    @if(Model.RecognizedText != null)
+    @Model.RecognizedText
+</div>

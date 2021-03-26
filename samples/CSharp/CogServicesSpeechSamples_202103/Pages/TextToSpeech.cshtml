@@ -1,0 +1,29 @@
+﻿@page
+@model CogServicesSpeechSamples_202103.Pages.TextToSpeechModel
+@{
+    ViewData["Title"] = "Text to Speech";
+}
+
+<h1>Speech Services - Text to Speech</h1>
+@*Type text and click "Analyze"*@
+テキストを入力して "Convert" をクリック
+<form method="post" enctype="multipart/form-data">
+    <div><textarea asp-for="TextString" type="text" rows="4" cols="40"></textarea></div>
+    <div>
+        <select asp-for="LangVoice">
+            <option value="ja-JP-KeitaNeural">日本語: Keita (Neural)</option>
+            <option value="ja-JP-NanamiNeural">日本語: Nanami (Neural)</option>
+        </select>
+        <input type="submit" value="Convert" />
+    </div>
+</form>
+
+<div>
+    @Model.Result
+</div>
+<div>
+    @if (Model.AudioUrl != null)
+    {
+        <a href="@Model.AudioUrl" target="_blank" rel="noopener noreferrer">Voice File</a>
+    }
+</div>
